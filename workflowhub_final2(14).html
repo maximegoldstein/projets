@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkflowHub — Automatisez votre business avec l'IA</title>
+<meta name="description" content="150+ workflows d'automatisation n8n prêts à déployer. Économisez des semaines de développement.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="navLogo" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <rect width="42" height="42" rx="11" fill="url(#navLogo)"/>
+          <circle cx="21" cy="10" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="10" cy="22" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="32" cy="22" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="14" cy="34" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="28" cy="34" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="21" cy="22" r="4" fill="white"/>
+          <line x1="21" y1="10" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="10" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="32" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="21" y1="22" x2="14" y2="34" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="21" y1="22" x2="28" y2="34" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="21" y1="10" x2="10" y2="22" stroke="white" stroke-width="1" opacity="0.3"/>
+          <line x1="21" y1="10" x2="32" y2="22" stroke="white" stroke-width="1" opacity="0.3"/>
+          <circle cx="21" cy="22" r="7" stroke="white" stroke-width="1" fill="none" opacity="0.35"/>
+        </svg>"><rect width="42" height="42" rx="11" fill="white"/><rect width="42" height="42" rx="11" fill="url(%23lg1)" opacity="1"/><defs><linearGradient id="lg1" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="%236366f1"/><stop offset="100%" stop-color="%2306b6d4"/></linearGradient></defs><circle cx="21" cy="10" r="2.5" fill="white" opacity="0.9"/><circle cx="10" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="32" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="14" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="28" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="21" cy="22" r="4" fill="white"/><line x1="21" y1="10" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="10" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="32" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="14" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="28" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/><circle cx="21" cy="22" r="7" stroke="white" stroke-width="1" fill="none" opacity="0.35"/></svg>"><defs><linearGradient id="lg1" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="%236366f1"/><stop offset="100%" stop-color="%2306b6d4"/></linearGradient></defs><rect width="42" height="42" rx="11" fill="url(%23lg1)"/><circle cx="21" cy="10" r="2.5" fill="white" opacity="0.9"/><circle cx="10" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="32" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="14" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="28" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="21" cy="22" r="4" fill="white"/><line x1="21" y1="10" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="10" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="32" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="14" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="28" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/><circle cx="21" cy="22" r="7" stroke="white" stroke-width="1" fill="none" opacity="0.35"/></svg>"><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236366f1'/><stop offset='1' stop-color='%2306b6d4'/></linearGradient></defs><rect width='32' height='32' rx='8' fill='url(%23g)'/><path d='M8 16L13 21L24 11' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --indigo: #6366f1;
+  --indigo-dark: #4f46e5;
+  --cyan: #06b6d4;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --bg: #f8f9ff;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --grad: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  --grad-warm: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --grad-dark: linear-gradient(135deg, #1e1b4b 0%, #0c4a6e 100%);
+  --shadow-sm: 0 2px 12px rgba(99,102,241,0.08);
+  --shadow: 0 6px 30px rgba(99,102,241,0.14);
+  --shadow-lg: 0 20px 60px rgba(99,102,241,0.2);
+  --radius: 18px;
+  --radius-sm: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-size:17px;line-height:1.7;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:#f1f1f1;}
+::-webkit-scrollbar-thumb{background:var(--indigo);border-radius:3px;}
+
+/* ── UTILS ── */
+.gradient-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:16px;cursor:pointer;border:none;transition:all .25s ease;text-decoration:none;white-space:nowrap;}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 18px rgba(99,102,241,0.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,102,241,0.5);}
+.btn-outline{background:transparent;color:var(--indigo);border:2px solid var(--indigo);}
+.btn-outline:hover{background:var(--indigo);color:#fff;transform:translateY(-2px);}
+.btn-ghost{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(8px);}
+.btn-ghost:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px);}
+.btn-lg{padding:17px 40px;font-size:18px;}
+.container{max-width:1220px;margin:0 auto;padding:0 28px;}
+.section{padding:96px 0;}
+.section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--indigo);margin-bottom:12px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.12;margin-bottom:16px;}
+.section-sub{font-size:19px;color:var(--muted);line-height:1.7;max-width:560px;}
+
+/* ── HEADER ── */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .3s ease;background:rgba(248,249,255,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(229,231,235,0.7);box-shadow:0 4px 24px rgba(0,0,0,0.05);}
+header.scrolled{background:rgba(248,249,255,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(229,231,235,0.7);box-shadow:0 4px 24px rgba(0,0,0,0.05);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1220px;margin:0 auto;}
+
+/* ── SVG LOGO ── */
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
+.logo-svg-wrap{width:42px;height:42px;flex-shrink:0;}
+.logo-text-wrap{display:flex;flex-direction:column;line-height:1;}
+.logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--text);letter-spacing:-0.5px;}
+.logo-name span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.logo-tagline{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
+
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{padding:9px 17px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;transition:all .2s;cursor:pointer;}
+.nav-links a:hover,.nav-links a.active{color:var(--indigo);background:rgba(99,102,241,0.08);}
+.nav-actions{display:flex;align-items:center;gap:11px;}
+.cart-btn{position:relative;background:rgba(99,102,241,0.07);border:none;cursor:pointer;padding:9px 12px;border-radius:10px;transition:all .2s;font-size:18px;line-height:1;}
+.cart-btn:hover{background:rgba(99,102,241,0.14);}
+.cart-badge{position:absolute;top:-3px;right:-3px;background:var(--amber);color:#fff;border-radius:50%;width:19px;height:19px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid white;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:9px;}
+.burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.page{display:none;padding-top:78px;}
+.page.active{display:block;}
+
+/* ══════════════════════════════
+   PAGE ACCUEIL — HERO
+══════════════════════════════ */
+.hero{min-height:calc(100vh - 78px);display:flex;align-items:center;position:relative;overflow:hidden;padding:70px 0;background:#f8f9ff;}
+/* Animated grid bg */
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.06) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-glow1{position:absolute;top:-150px;right:-100px;width:650px;height:650px;background:radial-gradient(circle,rgba(99,102,241,0.18) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-100px;left:-50px;width:450px;height:450px;background:radial-gradient(circle,rgba(6,182,212,0.12) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(6,182,212,0.08));border:1px solid rgba(99,102,241,0.25);border-radius:50px;padding:7px 18px;font-size:14px;font-weight:600;color:var(--indigo);margin-bottom:26px;}
+.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 6px var(--emerald);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(1.3)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(38px,5.5vw,68px);font-weight:800;line-height:1.06;margin-bottom:22px;letter-spacing:-1px;}
+.hero-sub{font-size:19px;line-height:1.75;color:var(--muted);margin-bottom:38px;max-width:500px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px;}
+.hero-social-proof{display:flex;align-items:center;gap:14px;}
+.avatars{display:flex;}
+.avatars img{width:34px;height:34px;border-radius:50%;border:2px solid white;margin-left:-8px;object-fit:cover;}
+.avatars img:first-child{margin-left:0;}
+.social-proof-text{font-size:14px;color:var(--muted);}<br>.social-proof-text strong{color:var(--text);}
+
+/* Hero visual */
+.hero-visual{position:relative;}
+.hero-main-img{border-radius:22px;overflow:hidden;box-shadow:0 28px 80px rgba(99,102,241,0.22);border:1px solid rgba(99,102,241,0.15);position:relative;}
+.hero-main-img img{width:100%;height:430px;object-fit:cover;display:block;}
+.hero-main-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,23,42,0.4));}
+/* Float cards */
+.float-card{position:absolute;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;padding:14px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.9);}
+.float-card.tl{top:-20px;left:-22px;}
+.float-card.br{bottom:-18px;right:-22px;}
+.float-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;line-height:1;}
+.float-lbl{font-size:12px;color:var(--muted);margin-top:2px;}
+.float-card.tl .float-val{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.float-card.br .float-val{background:var(--grad-warm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+/* Floating badge */
+.float-badge{position:absolute;top:50%;right:-26px;transform:translateY(-50%);background:var(--grad);border-radius:12px;padding:12px 16px;box-shadow:0 10px 30px rgba(99,102,241,0.4);color:#fff;text-align:center;min-width:80px;}
+.float-badge-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1;}
+.float-badge-lbl{font-size:11px;opacity:.85;margin-top:2px;}
+@keyframes float{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 10px))}}
+.float-animate{animation:float 4s ease-in-out infinite;}
+
+/* ── MARQUEE (logos partenaires) ── */
+.marquee-section{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:48px;align-items:center;animation:marquee 22s linear infinite;width:max-content;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:600;font-size:15px;white-space:nowrap;opacity:.65;}
+.marquee-item svg{flex-shrink:0;}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.stat-item{padding:52px 32px;text-align:center;position:relative;}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:28%;height:44%;width:1px;background:var(--border);}
+.stat-num{font-family:'Syne',sans-serif;font-size:clamp(46px,6vw,72px);font-weight:800;line-height:1;margin-bottom:10px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-label{font-size:18px;color:var(--muted);font-weight:500;}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
+.feature-card{background:#fff;border-radius:var(--radius);padding:32px;border:1px solid var(--border);transition:all .3s;cursor:default;position:relative;overflow:hidden;}
+.feature-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;}
+.feature-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);}
+.feature-card:hover::before{opacity:.04;}
+.feature-card:hover .fi{background:var(--grad);color:#fff;}
+.fi{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;background:rgba(99,102,241,0.09);transition:all .3s;position:relative;z-index:1;}
+.feature-card h3{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:9px;position:relative;z-index:1;}
+.feature-card p{font-size:15px;color:var(--muted);line-height:1.65;position:relative;z-index:1;}
+
+/* ── PRODUCT CARDS ── */
+.products-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.product-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all .3s;cursor:pointer;}
+.product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
+.pimg{height:200px;overflow:hidden;position:relative;}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .45s;}
+.product-card:hover .pimg img{transform:scale(1.07);}
+.pimg-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(15,23,42,.35));}
+.pbadge{position:absolute;top:12px;left:12px;padding:5px 13px;border-radius:50px;font-size:12px;font-weight:700;z-index:1;letter-spacing:.3px;}
+.bp{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;}
+.bn{background:linear-gradient(135deg,#10b981,#06b6d4);color:#fff;}
+.pinfo{padding:22px;}
+.pname{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:7px;}
+.pdesc{font-size:14px;color:var(--muted);margin-bottom:15px;line-height:1.55;}
+.pfooter{display:flex;align-items:center;justify-content:space-between;}
+.pprice{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pstars{font-size:13px;color:var(--amber);margin-bottom:5px;}
+.btn-sm-cart{background:var(--grad);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.btn-sm-cart:hover{opacity:.9;transform:scale(1.04);}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--grad-dark);border-radius:26px;padding:72px 56px;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:rgba(99,102,241,0.25);border-radius:50%;filter:blur(60px);}
+.cta-banner::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:rgba(6,182,212,0.2);border-radius:50%;filter:blur(50px);}
+.cta-banner h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:800;color:#fff;margin-bottom:14px;position:relative;z-index:1;}
+.cta-banner p{color:rgba(255,255,255,.8);font-size:19px;margin-bottom:36px;position:relative;z-index:1;}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1;}
+.btn-white{background:#fff;color:var(--indigo);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,255,255,.3);}
+
+/* ── PAGE HERO ── */
+.page-hero{background:linear-gradient(160deg,#eef0ff 0%,#f8f9ff 100%);padding:68px 0 52px;}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;margin-bottom:13px;letter-spacing:-0.5px;}
+.page-hero p{color:var(--muted);font-size:19px;}
+
+/* ── SHOP ── */
+.shop-filters{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:44px;flex-wrap:wrap;}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;}
+.ftab{padding:9px 20px;border-radius:50px;border:1px solid var(--border);background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;color:var(--muted);}
+.ftab:hover,.ftab.active{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.filter-right{display:flex;gap:11px;align-items:center;}
+.fselect{padding:10px 16px;border-radius:11px;border:1px solid var(--border);background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:var(--text);cursor:pointer;}
+.search-wrap{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:50px;padding:10px 20px;transition:all .2s;}
+.search-wrap:focus-within{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(99,102,241,.1);}
+.search-wrap input{border:none;outline:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;width:180px;background:transparent;color:var(--text);}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.pcf{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all .3s;}
+.pcf:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
+.pcf .pimg{height:200px;}
+.prating{display:flex;align-items:center;gap:6px;margin-bottom:11px;}
+.prating .stars{color:var(--amber);font-size:15px;}
+.prating span{font-size:14px;color:var(--muted);}
+.add-btn{width:100%;background:var(--grad);color:#fff;border:none;border-radius:11px;padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;}
+.add-btn:hover{opacity:.9;transform:scale(1.02);}
+.add-btn.added{background:linear-gradient(135deg,#10b981,#059669);}
+
+/* ── PRICING ── */
+.pricing-toggle{display:flex;align-items:center;justify-content:center;gap:16px;margin:32px 0;}
+.tl{font-size:17px;font-weight:500;}
+.tswitch{position:relative;width:54px;height:28px;cursor:pointer;}
+.tswitch input{opacity:0;width:0;height:0;}
+.tslider{position:absolute;inset:0;background:#ddd;border-radius:14px;transition:.3s;}
+.tswitch input:checked~.tslider{background:var(--indigo);}
+.tslider::before{content:'';position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 2px 5px rgba(0,0,0,.15);}
+.tswitch input:checked~.tslider::before{transform:translateX(26px);}
+.tbadge{background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:50px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:16px;}
+.pcard{background:#fff;border-radius:22px;padding:40px;border:1px solid var(--border);position:relative;transition:all .3s;}
+.pcard:hover{transform:translateY(-5px);}
+.pcard.featured{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box, var(--grad) border-box;box-shadow:0 24px 70px rgba(99,102,241,.22);transform:scale(1.04);}
+.pcard.featured:hover{transform:scale(1.06) translateY(-4px);}
+.plan-badge{display:inline-block;padding:5px 15px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:20px;}
+.pb-s{background:#f3f4f6;color:var(--muted);}
+.pb-p{background:var(--grad);color:#fff;}
+.pb-e{background:#f3f4f6;color:var(--muted);}
+.plan-name{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:8px;}
+.plan-price{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;line-height:1;margin-bottom:4px;}
+.plan-price.g{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.plan-period{font-size:14px;color:var(--muted);margin-bottom:16px;}
+.plan-desc{font-size:15px;color:var(--muted);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:32px;}
+.plan-feats li{display:flex;align-items:flex-start;gap:10px;font-size:15px;}
+.plan-feats li::before{content:'✓';color:#10b981;font-weight:700;margin-top:2px;flex-shrink:0;}
+.pop-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;padding:6px 20px;border-radius:50px;font-size:13px;font-weight:700;white-space:nowrap;}
+.faq-wrap{margin-top:56px;max-width:720px;margin-left:auto;margin-right:auto;}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:11px;overflow:hidden;background:#fff;}
+.faq-q{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-weight:600;font-size:17px;transition:all .2s;}
+.faq-q:hover{background:rgba(99,102,241,.04);}
+.faq-ico{width:28px;height:28px;border-radius:50%;background:rgba(99,102,241,.1);display:flex;align-items:center;justify-content:center;color:var(--indigo);font-size:19px;font-weight:700;transition:transform .3s;flex-shrink:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:15px;color:var(--muted);line-height:1.75;}
+.faq-a.open{max-height:200px;padding:0 24px 20px;}
+.faq-item.open .faq-ico{transform:rotate(45deg);}
+
+/* ── ABOUT ── */
+.about-2col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.aimg{border-radius:24px;overflow:hidden;box-shadow:0 22px 60px rgba(99,102,241,.15);}
+.aimg img{width:100%;height:440px;object-fit:cover;display:block;}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.vcard{background:#fff;border-radius:var(--radius);padding:36px;border:1px solid var(--border);text-align:center;transition:all .3s;}
+.vcard:hover{transform:translateY(-7px);box-shadow:var(--shadow);}
+.vico{font-size:42px;margin-bottom:16px;}
+.vcard h3{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;margin-bottom:10px;}
+.vcard p{font-size:15px;color:var(--muted);line-height:1.65;}
+.timeline{position:relative;max-width:620px;margin:52px auto 0;}
+.timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--indigo),var(--cyan));}
+.tl-item{display:flex;gap:26px;margin-bottom:40px;}
+.tl-dot{width:46px;height:46px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;box-shadow:0 0 0 5px rgba(99,102,241,.15);}
+.tl-body h4{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:4px;}
+.tl-body p{font-size:15px;color:var(--muted);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:52px;}
+.tcard{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:all .3s;}
+.tcard:hover{transform:translateY(-7px);box-shadow:var(--shadow);}
+.tcard-img{height:200px;overflow:hidden;}
+.tcard-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;}
+.tcard:hover .tcard-img img{transform:scale(1.06);}
+.tcard-info{padding:20px;}
+.tcard-name{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin-bottom:3px;}
+.tcard-role{font-size:13px;color:var(--indigo);font-weight:600;margin-bottom:8px;}
+.tcard-bio{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;}
+.cinfo-block{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;}
+.cico{width:50px;height:50px;border-radius:13px;background:rgba(99,102,241,.09);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.cinfo-block h4{font-weight:700;font-size:17px;margin-bottom:4px;}
+.cinfo-block p,.cinfo-block a{font-size:15px;color:var(--muted);text-decoration:none;}
+.cinfo-block a:hover{color:var(--indigo);}
+.social-row{display:flex;gap:10px;margin-top:32px;}
+.sbtn{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none;background:#fff;}
+.sbtn:hover{background:var(--grad);border-color:transparent;transform:translateY(-2px);}
+.cform{background:#fff;border-radius:22px;padding:44px;border:1px solid var(--border);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{margin-bottom:20px;}
+.fg label{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:var(--text);background:#fafbff;transition:all .2s;outline:none;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--indigo);background:#fff;box-shadow:0 0 0 3px rgba(99,102,241,.1);}
+.fg textarea{resize:vertical;min-height:120px;}
+.fcheck{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted);cursor:pointer;}
+.fcheck input{margin-top:3px;accent-color:var(--indigo);}
+.fsuccess{display:none;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(6,182,212,.1));border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:20px;text-align:center;margin-top:16px;font-size:16px;}
+.fsuccess.show{display:block;}
+
+/* ── MODALS ── */
+.moverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.moverlay.open{display:flex;}
+.modal{background:#fff;border-radius:26px;padding:44px;width:100%;max-width:460px;position:relative;max-height:90vh;overflow-y:auto;}
+.mclose{position:absolute;top:16px;right:16px;background:rgba(107,114,128,.1);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.mclose:hover{background:rgba(239,68,68,.1);color:#ef4444;}
+.modal-title{font-family:'Syne',sans-serif;font-size:25px;font-weight:800;margin-bottom:6px;}
+.modal-sub{font-size:15px;color:var(--muted);margin-bottom:28px;}
+
+/* OAuth buttons with real brand colors */
+.oauth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:11px;padding:12px 16px;border-radius:11px;border:1.5px solid var(--border);background:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;margin-bottom:10px;}
+.oauth-btn:hover{background:#f9fafb;border-color:#a5b4fc;transform:translateY(-1px);}
+.oauth-btn svg{flex-shrink:0;}
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted);font-size:14px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.mfooter{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);}
+.mfooter a{color:var(--indigo);cursor:pointer;font-weight:600;}
+.pw-strength{margin-top:6px;display:flex;gap:4px;}
+.pw-bar{height:3px;flex:1;border-radius:2px;background:var(--border);transition:all .3s;}
+
+/* ── CART SIDEBAR ── */
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1800;display:none;backdrop-filter:blur(3px);}
+.cart-ov.open{display:block;}
+.cart-sb{position:fixed;top:0;right:-500px;width:100%;max-width:450px;height:100vh;background:#fff;z-index:1900;display:flex;flex-direction:column;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.12);}
+.cart-sb.open{right:0;}
+.cart-hd{padding:24px 24px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.cart-hd h3{font-family:'Syne',sans-serif;font-size:21px;font-weight:800;}
+.cart-body{flex:1;overflow-y:auto;padding:20px 24px;}
+.ci{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border);}
+.ci-img{width:64px;height:64px;border-radius:11px;overflow:hidden;flex-shrink:0;}
+.ci-img img{width:100%;height:100%;object-fit:cover;}
+.ci-info{flex:1;}
+.ci-name{font-weight:600;font-size:15px;margin-bottom:4px;}
+.ci-price{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ci-qty{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.qbtn{width:26px;height:26px;border-radius:7px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.qbtn:hover{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.ci-del{background:none;border:none;cursor:pointer;color:var(--muted);font-size:19px;padding:4px;border-radius:6px;transition:all .2s;}
+.ci-del:hover{color:#ef4444;background:rgba(239,68,68,.1);}
+.cempty{text-align:center;padding:64px 20px;color:var(--muted);}
+.cempty-ico{font-size:48px;margin-bottom:12px;}
+.cart-ft{padding:20px 24px;border-top:1px solid var(--border);}
+.promo-row{display:flex;gap:8px;margin-bottom:16px;}
+.promo-row input{flex:1;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;transition:all .2s;}
+.promo-row input:focus{border-color:var(--indigo);}
+.promo-row button{padding:11px 16px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;cursor:pointer;font-size:14px;}
+.ctotals{margin-bottom:16px;}
+.ctr{display:flex;justify-content:space-between;font-size:15px;margin-bottom:8px;}
+.ctr.total{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;border-top:1px solid var(--border);padding-top:12px;margin-top:8px;}
+
+/* ── CHECKOUT ── */
+#page-checkout{background:#f0f1ff;}
+.co-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+.co-card{background:#fff;border-radius:16px;padding:32px;border:1px solid var(--border);margin-bottom:22px;}
+.co-card h3{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+.step-n{width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pay-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.ptab{flex:1;padding:11px;border:1.5px solid var(--border);border-radius:10px;background:#fff;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;text-align:center;transition:all .2s;}
+.ptab.active{border-color:var(--indigo);background:rgba(99,102,241,.06);color:var(--indigo);}
+.card-logos{display:flex;gap:7px;margin-bottom:16px;}
+.clbadge{padding:4px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-weight:700;}
+.oi{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.oi-img{width:46px;height:46px;border-radius:9px;overflow:hidden;flex-shrink:0;}
+.oi-img img{width:100%;height:100%;object-fit:cover;}
+.sec-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.sbadge{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--muted);background:#fff;}
+
+/* ── FOOTER ── */
+footer{background:#0b0f1a;color:#8892a4;padding:68px 0 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-logo{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:14px;}
+.footer-logo .logo-name{color:#fff;}
+.fdesc{font-size:15px;line-height:1.75;margin-bottom:20px;}
+.fsocial{display:flex;gap:8px;}
+.fsocial a{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;text-decoration:none;font-weight:700;}
+.fsocial a:hover{background:var(--indigo);border-color:var(--indigo);}
+.fcol h4{color:#fff;font-family:'Syne',sans-serif;font-weight:700;margin-bottom:16px;font-size:17px;}
+.fcol a{display:block;font-size:14px;color:#8892a4;text-decoration:none;margin-bottom:11px;transition:color .2s;cursor:pointer;}
+.fcol a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:24px 0;display:flex;align-items:center;justify-content:space-between;font-size:14px;}
+
+/* MISC */
+.back-top{position:fixed;bottom:28px;right:28px;width:46px;height:46px;background:var(--grad);border:none;border-radius:12px;color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(99,102,241,.4);display:none;align-items:center;justify-content:center;transition:all .3s;z-index:500;}
+.back-top.show{display:flex;}
+.back-top:hover{transform:translateY(-4px);}
+.toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%) translateY(22px);background:rgba(11,15,26,.95);color:#fff;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:500;opacity:0;transition:all .4s;z-index:3000;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.mmenu{position:fixed;top:78px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:20px 24px;display:none;flex-direction:column;gap:8px;z-index:999;box-shadow:0 12px 32px rgba(0,0,0,.1);}
+.mmenu.open{display:flex;}
+.mmenu a{padding:12px 16px;border-radius:10px;font-weight:500;font-size:17px;color:var(--text);cursor:pointer;text-decoration:none;}
+.mmenu a:hover{background:rgba(99,102,241,.08);color:var(--indigo);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner,.about-2col,.co-grid{grid-template-columns:1fr;}
+  .hero-visual{order:-1;}
+  .features-grid,.products-preview,.products-grid,.team-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .pcard.featured{transform:scale(1);}
+  .float-badge{display:none;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .hero h1{font-size:36px;}
+  .stats-grid{grid-template-columns:1fr;}
+  .stat-item::after{display:none;}
+  .features-grid,.products-preview,.products-grid,.val-grid,.team-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .co-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .float-card{display:none;}
+  .section{padding:60px 0;}
+  .products-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .products-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+
+/* ── PRODUCT DETAIL MODAL ── */
+.prod-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:20px;}
+.prod-modal-ov.open{display:flex;}
+.prod-modal{background:#fff;border-radius:26px;width:100%;max-width:820px;max-height:90vh;overflow-y:auto;overscroll-behavior:contain;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.prod-modal-img{border-radius:26px 0 0 26px;overflow:hidden;min-height:360px;}
+.prod-modal-img img{width:100%;height:100%;object-fit:cover;}
+.prod-modal-body{padding:36px 32px;display:flex;flex-direction:column;gap:14px;}
+.prod-modal-close{position:absolute;top:16px;right:16px;background:rgba(107,114,128,.12);border:none;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s;}
+.prod-modal-close:hover{background:rgba(107,114,128,.22);}
+.prod-modal-badge{display:inline-block;padding:4px 14px;border-radius:50px;font-size:12px;font-weight:700;background:rgba(99,102,241,.1);color:var(--indigo);}
+.prod-modal-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1.2;}
+.prod-modal-stars{color:#f59e0b;font-size:16px;letter-spacing:2px;}
+.prod-modal-price{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.prod-modal-desc{font-size:15px;color:var(--muted);line-height:1.7;}
+.prod-modal-features{list-style:none;display:flex;flex-direction:column;gap:7px;padding:0;}
+.prod-modal-features li{font-size:14px;color:var(--text);display:flex;align-items:flex-start;gap:8px;}
+.prod-modal-features li::before{content:'✓';color:var(--indigo);font-weight:700;font-size:15px;flex-shrink:0;}
+.prod-modal-reviews{border-top:1px solid var(--border);padding-top:14px;}
+.prod-review{background:#f8f9ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.prod-review-name{font-weight:600;font-size:13px;margin-bottom:2px;}
+.prod-review-stars{color:#f59e0b;font-size:12px;}
+.prod-review-text{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.workflow-preview{background:#1e1e2e;border-radius:12px;padding:12px 14px;font-family:monospace;font-size:11px;color:#a6e3a1;line-height:2;display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+.workflow-node{display:inline-flex;align-items:center;gap:5px;background:rgba(99,102,241,.25);border:1px solid rgba(99,102,241,.5);border-radius:6px;padding:3px 10px;color:#cdd6f4;font-size:11px;}
+.workflow-arrow{color:#6c7086;font-size:13px;}
+@media(max-width:640px){.prod-modal{grid-template-columns:1fr;}.prod-modal-img{min-height:200px;border-radius:26px 26px 0 0;}}
+
+/* ══════════════════════════════
+   RESPONSIVE COMPLET
+══════════════════════════════ */
+
+/* ── TABLETTE (768px) ── */
+@media(max-width:768px){
+  /* Nav */
+  .nav{padding:14px 18px;}
+  .nav-actions .btn{display:none;}
+  .nav-actions .cart-btn{display:flex;}
+
+  /* Hero */
+  .hero{padding:40px 0 50px;}
+  .hero-inner{grid-template-columns:1fr;gap:32px;text-align:center;}
+  .hero-visual{order:-1;max-width:380px;margin:0 auto;}
+  .hero h1{font-size:clamp(32px,8vw,48px);}
+  .hero-sub{font-size:16px;margin:0 auto 28px;}
+  .hero-btns{justify-content:center;flex-wrap:wrap;}
+  .social-proof{justify-content:center;}
+
+  /* Sections */
+  .section{padding:52px 0;}
+  .section-title{font-size:clamp(24px,6vw,36px);}
+  .container{padding:0 18px;}
+
+  /* Stats */
+  .stats-grid{grid-template-columns:1fr 1fr;gap:0;}
+  .stat-item{padding:32px 20px;}
+  .stat-num{font-size:clamp(36px,8vw,52px);}
+
+  /* Features */
+  .features-grid{grid-template-columns:1fr;}
+  .feature-card{padding:24px;}
+
+  /* Products */
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .products-preview{grid-template-columns:1fr;}
+
+  /* Pricing */
+  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
+  .pcard.featured{transform:scale(1);}
+  .pcard.featured:hover{transform:translateY(-4px);}
+
+  /* About */
+  .about-2col{grid-template-columns:1fr;}
+  .aimg{max-width:100%;border-radius:16px;}
+  .val-grid{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:1fr 1fr;}
+  .timeline{padding-left:8px;}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;}
+  .cinfo-block{margin-bottom:16px;}
+
+  /* Checkout */
+  .co-grid{grid-template-columns:1fr;}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+
+  /* Page hero */
+  .page-hero{padding:48px 0 36px;}
+  .page-hero h1{font-size:clamp(26px,7vw,40px);}
+
+  /* Cart sidebar */
+  .cart-sb{max-width:100%;}
+
+  /* Modal */
+  .prod-modal{grid-template-columns:1fr;max-height:95vh;}
+  .prod-modal-img{min-height:180px;border-radius:26px 26px 0 0;}
+  .prod-modal-body{padding:20px 18px;}
+  .prod-modal-title{font-size:18px;}
+  .prod-modal-price{font-size:26px;}
+}
+
+/* ── MOBILE (480px) ── */
+@media(max-width:480px){
+  /* Nav */
+  .nav{padding:12px 14px;}
+  .logo-name{font-size:17px;}
+  .logo-tagline{display:none;}
+
+  /* Hero */
+  .hero{padding:32px 0 40px;}
+  .hero h1{font-size:clamp(28px,9vw,40px);}
+  .hero-sub{font-size:15px;}
+  .hero-pill{font-size:12px;padding:6px 14px;}
+  .btn-lg{padding:13px 22px;font-size:15px;}
+
+  /* Stats */
+  .stats-grid{grid-template-columns:1fr;}
+  .stat-item{padding:24px 16px;}
+
+  /* Products */
+  .products-grid{grid-template-columns:1fr;}
+  .products-preview{grid-template-columns:1fr;}
+
+  /* Filters */
+  .filters{flex-wrap:wrap;gap:8px;}
+  .ftab{font-size:13px;padding:7px 14px;}
+
+  /* Pricing toggle */
+  .toggle-wrap{flex-wrap:wrap;justify-content:center;}
+
+  /* Team */
+  .team-grid{grid-template-columns:1fr;}
+  .val-grid{grid-template-columns:1fr;}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr;}
+  .fcol{margin-bottom:8px;}
+
+  /* Modal */
+  .prod-modal-ov{padding:0;}
+  .prod-modal{border-radius:20px 20px 0 0;position:fixed;bottom:0;left:0;right:0;max-height:92vh;margin-top:auto;}
+  .prod-modal-body{padding:16px 14px;}
+  .prod-modal-title{font-size:16px;}
+  .prod-modal-price{font-size:22px;}
+  .workflow-preview{display:none;}
+
+  /* CTA banner */
+  .cta-banner{padding:44px 24px;border-radius:18px;}
+  .cta-btns{flex-direction:column;align-items:center;}
+
+  /* Modals */
+  .modal{padding:28px 20px;border-radius:20px;}
+
+  /* Sections spacing */
+  .section{padding:40px 0;}
+  .section-label{font-size:11px;}
+  .section-title{font-size:clamp(22px,7vw,32px);}
+
+  /* Page hero */
+  .page-hero{padding:36px 0 28px;}
+  .page-hero h1{font-size:clamp(22px,8vw,34px);}
+
+  /* FAQ */
+  .faq-q{font-size:15px;}
+
+  /* Contact form */
+  .fg label{font-size:13px;}
+  .fg input,.fg textarea,.fg select{font-size:15px;}
+
+  /* Back to top */
+  .back-top{bottom:18px;right:18px;width:40px;height:40px;font-size:17px;}
+}
+
+/* ── TRÈS PETIT MOBILE (360px) ── */
+@media(max-width:360px){
+  .hero h1{font-size:26px;}
+  .nav{padding:10px 12px;}
+  .logo-name{font-size:15px;}
+  .btn-lg{padding:11px 18px;font-size:14px;}
+  .stat-num{font-size:32px;}
+}
+
+
+/* ════════════════════════════════
+   VISUAL BOOST — STARTUP TECH
+════════════════════════════════ */
+
+/* ── FONT: Switch body to sharper feel ── */
+body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* ── HERO: Dark immersive background ── */
+.hero {
+  background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2e 40%, #0a1628 100%) !important;
+  color: #fff;
+  min-height: 100vh;
+}
+.hero::before {
+  background-image:
+    linear-gradient(rgba(99,102,241,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.15) 1px, transparent 1px) !important;
+  background-size: 52px 52px !important;
+}
+/* Animated glow orbs */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -200px; left: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatOrb 8s ease-in-out infinite;
+}
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(60px, -40px) scale(1.05); }
+  66% { transform: translate(-30px, 30px) scale(0.97); }
+}
+
+/* Hero text on dark bg */
+.hero h1 { color: #fff; }
+.hero-sub { color: rgba(255,255,255,0.7) !important; }
+.hero-pill {
+  background: rgba(99,102,241,0.2) !important;
+  border-color: rgba(99,102,241,0.5) !important;
+  color: #c7d2fe;
+}
+.hero-pill-dot { background: #818cf8 !important; }
+.social-proof-text { color: rgba(255,255,255,0.6) !important; }
+
+/* Float cards on dark hero */
+.float-card {
+  background: rgba(15,15,40,0.85) !important;
+  border: 1px solid rgba(99,102,241,0.3) !important;
+  backdrop-filter: blur(20px) !important;
+}
+.float-label { color: rgba(255,255,255,0.55) !important; }
+.float-val { color: #fff !important; }
+
+/* ── STATS SECTION: Dark strip ── */
+.stats-grid {
+  background: linear-gradient(135deg, #0f0f2e 0%, #0a1628 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.stats-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.stat-item { padding: 56px 32px; position: relative; z-index: 1; }
+.stat-item:not(:last-child)::after { background: rgba(255,255,255,0.1) !important; }
+.stat-num {
+  background: linear-gradient(135deg, #a5b4fc, #67e8f9) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-size: clamp(52px,7vw,80px) !important;
+}
+.stat-label { color: rgba(255,255,255,0.6) !important; font-size: 15px; }
+
+/* ── FEATURE CARDS: Glassmorphism ── */
+.feature-card {
+  background: rgba(255,255,255,0.6) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99,102,241,0.15) !important;
+  transition: all .35s cubic-bezier(.4,0,.2,1) !important;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.06) !important;
+}
+.feature-card:hover {
+  background: rgba(255,255,255,0.92) !important;
+  border-color: rgba(99,102,241,0.35) !important;
+  box-shadow: 0 20px 60px rgba(99,102,241,0.18) !important;
+  transform: translateY(-8px) !important;
+}
+.fi {
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(6,182,212,0.1)) !important;
+  border: 1px solid rgba(99,102,241,0.2);
+  font-size: 28px !important;
+}
+.feature-card:hover .fi {
+  background: var(--grad) !important;
+  border-color: transparent !important;
+  transform: scale(1.1) rotate(-3deg);
+  transition: all .3s;
+}
+.feature-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; }
+
+/* ── PRODUCT CARDS: Sharper, more premium ── */
+.pcf {
+  background: #fff !important;
+  border: 1px solid rgba(99,102,241,0.1) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04) !important;
+  transition: all .35s cubic-bezier(.4,0,.2,1) !important;
+  overflow: hidden;
+}
+.pcf:hover {
+  border-color: rgba(99,102,241,0.3) !important;
+  box-shadow: 0 24px 64px rgba(99,102,241,0.18) !important;
+  transform: translateY(-10px) !important;
+}
+.pcf .pimg { height: 200px; position: relative; overflow: hidden; }
+.pcf .pimg img { transition: transform .5s cubic-bezier(.4,0,.2,1) !important; }
+.pcf:hover .pimg img { transform: scale(1.1) !important; }
+
+/* Category badge on product */
+.pbadge {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+/* ── SECTION LABELS: More distinctive ── */
+.section-label {
+  font-family: 'Syne', sans-serif !important;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 4px !important;
+  font-size: 11px !important;
+}
+
+/* ── SECTION TITLES ── */
+.section-title { letter-spacing: -0.5px; }
+
+/* ── CTA BANNER: More dramatic ── */
+.cta-banner {
+  background: linear-gradient(135deg, #1a0a3e 0%, #0c1a4e 50%, #0a2a3e 100%) !important;
+  border: 1px solid rgba(99,102,241,0.25) !important;
+  box-shadow: 0 40px 100px rgba(99,102,241,0.3), inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+.cta-banner::before {
+  background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, transparent 60%) !important;
+}
+.cta-banner h2 { font-size: clamp(30px,4.5vw,50px) !important; letter-spacing: -1px; }
+
+/* ── BUTTONS: More polished ── */
+.btn-primary {
+  box-shadow: 0 4px 20px rgba(99,102,241,0.4) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px;
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 32px rgba(99,102,241,0.6) !important;
+  transform: translateY(-2px);
+}
+.btn-outline {
+  border-width: 1.5px !important;
+  font-weight: 600 !important;
+}
+.btn-outline:hover { transform: translateY(-2px); }
+
+/* ── PRICING CARDS: More premium ── */
+.pcard {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
+  border-color: rgba(99,102,241,0.1) !important;
+  transition: all .35s !important;
+}
+.pcard:hover {
+  box-shadow: 0 20px 60px rgba(99,102,241,0.15) !important;
+  border-color: rgba(99,102,241,0.25) !important;
+  transform: translateY(-6px) !important;
+}
+.pcard.featured {
+  box-shadow: 0 30px 80px rgba(99,102,241,0.3) !important;
+}
+.plan-feats li::before { content: '✦'; color: var(--indigo); font-size: 10px; }
+
+/* ── TEAM CARD ── */
+.tcard {
+  border: 1px solid rgba(99,102,241,0.1) !important;
+  box-shadow: 0 4px 20px rgba(99,102,241,0.07) !important;
+}
+.tcard-name { font-family: 'Syne', sans-serif !important; font-size: 20px !important; }
+
+/* ── FOOTER: Sharper ── */
+footer { background: #06060f !important; }
+.footer-bottom { border-color: rgba(255,255,255,0.05) !important; }
+
+/* ── TESTIMONIALS SECTION ── */
+.testimonials-section {
+  background: linear-gradient(180deg, #f8f9ff 0%, #eef0ff 100%);
+  padding: 88px 0;
+}
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+}
+.testi-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(99,102,241,0.1);
+  box-shadow: 0 4px 24px rgba(99,102,241,0.06);
+  transition: all .3s;
+  position: relative;
+}
+.testi-card:hover {
+  box-shadow: 0 20px 60px rgba(99,102,241,0.14);
+  transform: translateY(-6px);
+  border-color: rgba(99,102,241,0.25);
+}
+.testi-quote {
+  font-size: 42px;
+  line-height: 1;
+  color: var(--indigo);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  position: absolute;
+  top: 20px;
+  right: 24px;
+}
+.testi-text {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testi-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.testi-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+}
+.testi-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.testi-stars { color: #f59e0b; font-size: 13px; letter-spacing: 1px; margin-bottom: 14px; }
+
+/* ── SCROLL REVEAL ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.feature-card, .pcf, .testi-card, .pcard, .tl-item {
+  animation: fadeUp .5s ease both;
+}
+.feature-card:nth-child(1), .pcf:nth-child(1), .testi-card:nth-child(1) { animation-delay: 0s; }
+.feature-card:nth-child(2), .pcf:nth-child(2), .testi-card:nth-child(2) { animation-delay: .08s; }
+.feature-card:nth-child(3), .pcf:nth-child(3), .testi-card:nth-child(3) { animation-delay: .16s; }
+.feature-card:nth-child(4), .pcf:nth-child(4) { animation-delay: .24s; }
+.feature-card:nth-child(5), .pcf:nth-child(5) { animation-delay: .32s; }
+.feature-card:nth-child(6), .pcf:nth-child(6) { animation-delay: .40s; }
+
+/* ── HEADER GLOW on scroll ── */
+header.scrolled {
+  box-shadow: 0 4px 32px rgba(99,102,241,0.12) !important;
+}
+
+/* ── NAV LINKS: Sharper active state ── */
+.nav-links a.active {
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(6,182,212,0.07)) !important;
+  color: var(--indigo) !important;
+  font-weight: 600;
+}
+
+/* ── PAGE HERO SECTIONS: Gradient ── */
+.page-hero {
+  background: linear-gradient(135deg, #0f0f2e 0%, #0a1628 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99,102,241,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.page-hero .section-label { position: relative; z-index: 1; }
+.page-hero h1 { color: #fff !important; position: relative; z-index: 1; }
+.page-hero p { color: rgba(255,255,255,0.65) !important; position: relative; z-index: 1; }
+
+/* ── ABOUT PAGE VALS ── */
+.val-card {
+  background: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(99,102,241,0.12) !important;
+  transition: all .3s !important;
+}
+.val-card:hover {
+  background: #fff !important;
+  box-shadow: 0 16px 48px rgba(99,102,241,0.14) !important;
+  transform: translateY(-5px) !important;
+}
+
+/* ── CONTACT CARDS ── */
+.cinfo-block {
+  transition: all .3s;
+}
+
+/* ── ADD-BTN: Gradient shimmer effect ── */
+.add-btn {
+  background: var(--grad) !important;
+  position: relative;
+  overflow: hidden;
+}
+.add-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left .5s;
+}
+.add-btn:hover::after { left: 100%; }
+
+/* ── RESPONSIVE ADJUSTMENTS for visual boost ── */
+@media(max-width:768px) {
+  .testi-grid { grid-template-columns: 1fr; }
+  .hero::after { display: none; }
+}
+@media(max-width:1024px) {
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<button class="back-top" id="backTop" onclick="scrollToTop()">↑</button>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header id="header">
+  <nav class="nav">
+    <!-- SVG LOGO HIGH-TECH IA -->
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-svg-wrap">
+        <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="svgG2" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <linearGradient id="lg2" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#4f46e5"/>
+              <stop offset="100%" stop-color="#0891b2"/>
+            </linearGradient>
+          </defs>
+          <!-- Rounded square bg -->
+          <rect width="42" height="42" rx="11" fill="url(#svgG2)"/>
+          <!-- Neural net nodes -->
+          <circle cx="21" cy="10" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="10" cy="22" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="32" cy="22" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="14" cy="34" r="2.5" fill="white" opacity="0.9"/>
+          <circle cx="28" cy="34" r="2.5" fill="white" opacity="0.9"/>
+          <!-- Center node -->
+          <circle cx="21" cy="22" r="4" fill="white"/>
+          <!-- Connecting lines -->
+          <line x1="21" y1="10" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <line x1="10" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <line x1="32" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <line x1="21" y1="22" x2="14" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <line x1="21" y1="22" x2="28" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <!-- Side connections -->
+          <line x1="21" y1="10" x2="10" y2="22" stroke="white" stroke-width="1" opacity="0.3"/>
+          <line x1="21" y1="10" x2="32" y2="22" stroke="white" stroke-width="1" opacity="0.3"/>
+          <line x1="10" y1="22" x2="14" y2="34" stroke="white" stroke-width="1" opacity="0.3"/>
+          <line x1="32" y1="22" x2="28" y2="34" stroke="white" stroke-width="1" opacity="0.3"/>
+          <!-- Pulse ring on center -->
+          <circle cx="21" cy="22" r="7" stroke="white" stroke-width="1" fill="none" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="logo-text-wrap">
+        <div class="logo-name">Workflow<span>Hub</span></div>
+        <div class="logo-tagline">AI Automation Lab</div>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a class="active" onclick="showPage('home')">Accueil</a>
+      <a onclick="showPage('shop')">Boutique</a>
+      <a onclick="showPage('pricing')">Tarifs</a>
+      <a onclick="showPage('about')">À propos</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="toggleCart()">🛒<span class="cart-badge" id="cartBadge">0</span></button>
+      <button class="btn btn-outline" style="padding:10px 20px;font-size:14px;" onclick="openModal('login')">Connexion</button>
+      <button class="btn btn-primary" style="padding:10px 20px;font-size:14px;" onclick="openModal('register')">Essai gratuit</button>
+      <button class="burger" id="burger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <a onclick="showPage('home');toggleMobileMenu()">Accueil</a>
+  <a onclick="showPage('shop');toggleMobileMenu()">Boutique</a>
+  <a onclick="showPage('pricing');toggleMobileMenu()">Tarifs</a>
+  <a onclick="showPage('about');toggleMobileMenu()">À propos</a>
+  <a onclick="showPage('contact');toggleMobileMenu()">Contact</a>
+  <div style="padding:12px 16px;display:flex;gap:8px;">
+    <button class="btn btn-outline" style="flex:1;padding:10px;font-size:15px;" onclick="openModal('login')">Connexion</button>
+    <button class="btn btn-primary" style="flex:1;padding:10px;font-size:15px;" onclick="openModal('register')">S'inscrire</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE ACCUEIL
+════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-glow1"></div>
+    <div class="hero-glow2"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-pill"><div class="hero-pill-dot"></div> 150+ Workflows IA disponibles dès maintenant</div>
+          <h1>Automatisez votre business avec <span class="gradient-text">l'intelligence artificielle</span></h1>
+          <p class="hero-sub">Accédez à 150+ workflows n8n testés en production. Déployez en 5 minutes, économisez des semaines de développement avec la puissance de l'IA.</p>
+          <div class="hero-btns">
+            <button class="btn btn-primary btn-lg" onclick="showPage('shop')">Découvrir les workflows →</button>
+            <button class="btn btn-outline btn-lg" onclick="showToast('🎬 Démo disponible bientôt !')">Voir la démo</button>
+          </div>
+          <div class="hero-social-proof">
+            <div class="avatars">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="u1">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&q=80" alt="u2">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&q=80" alt="u3">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80" alt="u4">
+            </div>
+            <div class="social-proof-text">Rejoignez <strong>500+ entreprises</strong> qui automatisent déjà</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-main-img">
+            <!-- Image IA futuriste : réseau neuronal, AI visualization -->
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=85" alt="AI Automation Visualization" loading="eager">
+          </div>
+          <div class="float-card tl">
+            <div class="float-val">98%</div>
+            <div class="float-lbl">Satisfaction client</div>
+          </div>
+          <div class="float-card br">
+            <div class="float-val">5 min</div>
+            <div class="float-lbl">Déploiement moyen</div>
+          </div>
+          <div class="float-badge float-animate">
+            <div class="float-badge-val">150+</div>
+            <div class="float-badge-lbl">Workflows</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee partenaires -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <!-- Répété 2× pour loop infini -->
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Workspace</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#2DA44E" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg> Slack</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#00BCD4" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg> Notion</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#FF7A00" d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm5.98 8.52l-1.867 8.8c-.14.62-.503.775-1.02.483L12 15.59l-1.555 1.497c-.172.172-.316.316-.65.316l.232-3.306 6.007-5.426c.26-.232-.057-.36-.405-.128L5.65 13.9 2.41 12.9c-.694-.217-.708-.694.145-.026l.032.017 9.6-3.706c.58-.217 1.088.145.793.91.08-.027.156-.1.162-.103l-.162.428z" fill="#FF6C2F"/></svg> HubSpot</span>
+      <span class="marquee-item" style="font-weight:700;color:#10b981;">🤖 OpenAI GPT-4</span>
+      <span class="marquee-item" style="font-weight:700;color:#6366f1;">⚡ n8n</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Workspace</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#2DA44E" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</span>
+      <span class="marquee-item"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 01-2.52 2.523A2.528 2.528 0 010 15.165a2.527 2.527 0 012.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 012.521-2.52 2.527 2.527 0 012.521 2.52v6.313A2.528 2.528 0 018.834 24a2.528 2.528 0 01-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 01-2.521-2.52A2.528 2.528 0 018.834 0a2.528 2.528 0 012.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 012.521 2.521 2.528 2.528 0 01-2.521 2.521H2.522A2.528 2.528 0 010 8.834a2.528 2.528 0 012.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 012.522-2.521A2.528 2.528 0 0124 8.834a2.528 2.528 0 01-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 01-2.523 2.521 2.527 2.527 0 01-2.52-2.521V2.522A2.527 2.527 0 0115.165 0a2.528 2.528 0 012.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 012.523 2.522A2.528 2.528 0 0115.165 24a2.527 2.527 0 01-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 01-2.52-2.523 2.526 2.526 0 012.52-2.52h6.313A2.527 2.527 0 0124 15.165a2.528 2.528 0 01-2.522 2.523h-6.313z"/></svg> Slack</span>
+      <span class="marquee-item" style="font-weight:700;color:#10b981;">🤖 OpenAI GPT-4</span>
+      <span class="marquee-item" style="font-weight:700;color:#6366f1;">⚡ n8n</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section style="background:#fff;border-bottom:1px solid var(--border);padding:0;">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num" id="stat1">0</div><div class="stat-label">Workflows disponibles</div></div>
+        <div class="stat-item"><div class="stat-num" id="stat2">0</div><div class="stat-label">Entreprises clientes</div></div>
+        <div class="stat-item"><div class="stat-num" id="stat3">0</div><div class="stat-label">Taux de satisfaction</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Pourquoi nous choisir</div>
+      <h2 class="section-title">Tout ce dont vous avez besoin pour <span class="gradient-text">automatiser vite</span></h2>
+      <p class="section-sub">Conçus par des experts n8n et IA pour s'intégrer immédiatement dans votre infrastructure.</p>
+      <div class="features-grid">
+        <div class="feature-card"><div class="fi">⚡</div><h3>Déploiement instantané</h3><p>Importez en un clic dans votre instance n8n. Aucune configuration complexe requise.</p></div>
+        <div class="feature-card"><div class="fi">✅</div><h3>Testés en production</h3><p>Chaque workflow validé en environnement réel avant publication sur notre catalogue.</p></div>
+        <div class="feature-card"><div class="fi">💰</div><h3>ROI immédiat</h3><p>Économisez des jours de développement dès la première semaine d'utilisation.</p></div>
+        <div class="feature-card"><div class="fi">🛡️</div><h3>Support premium 24/7</h3><p>Assistance technique dédiée par notre équipe d'experts automatisation IA.</p></div>
+        <div class="feature-card"><div class="fi">🎨</div><h3>100% Personnalisable</h3><p>Code source inclus. Modifiez chaque workflow selon vos besoins spécifiques.</p></div>
+        <div class="feature-card"><div class="fi">🔗</div><h3>400+ Intégrations</h3><p>Google, Slack, Notion, OpenAI, HubSpot, Salesforce et bien plus encore.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular products -->
+  <section class="section" style="background:#fff;">
+    <div class="container">
+      <div class="section-label">Best-sellers</div>
+      <h2 class="section-title">Nos workflows <span class="gradient-text">les plus populaires</span></h2>
+      <div class="products-preview">
+        <div class="product-card" onclick="showPage('shop')">
+          <div class="pimg">
+            <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=85" alt="Chatbot IA" loading="lazy">
+            <div class="pimg-overlay"></div><span class="pbadge bp">Populaire</span>
+          </div>
+          <div class="pinfo"><div class="pstars">★★★★★</div><div class="pname">Chatbot Service Client IA</div><div class="pdesc">Réponses automatiques avec Claude/GPT pour votre support 24/7</div>
+          <div class="pfooter"><div class="pprice">79€</div><button class="btn-sm-cart" onclick="event.stopPropagation();addToCart('Chatbot Service Client IA',79,'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=120&q=70')">+ Panier</button></div></div>
+        </div>
+        <div class="product-card" onclick="showPage('shop')">
+          <div class="pimg">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=85" alt="Analytics" loading="lazy">
+            <div class="pimg-overlay"></div><span class="pbadge bn">Nouveau</span>
+          </div>
+          <div class="pinfo"><div class="pstars">★★★★½</div><div class="pname">Dashboard Analytics Auto</div><div class="pdesc">Rapports hebdomadaires automatiques dans Google Sheets & Notion</div>
+          <div class="pfooter"><div class="pprice">69€</div><button class="btn-sm-cart" onclick="event.stopPropagation();addToCart('Dashboard Analytics Auto',69,'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&q=70')">+ Panier</button></div></div>
+        </div>
+        <div class="product-card" onclick="showPage('shop')">
+          <div class="pimg">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=85" alt="Blog IA" loading="lazy">
+            <div class="pimg-overlay"></div><span class="pbadge bp">Populaire</span>
+          </div>
+          <div class="pinfo"><div class="pstars">★★★★★</div><div class="pname">Auto-Publication Blog IA</div><div class="pdesc">Génère et publie vos articles automatiquement avec GPT-4</div>
+          <div class="pfooter"><div class="pprice">49€</div><button class="btn-sm-cart" onclick="event.stopPropagation();addToCart('Auto-Publication Blog IA',49,'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=120&q=70')">+ Panier</button></div></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:44px;"><button class="btn btn-primary btn-lg" onclick="showPage('shop')">Voir tous les workflows →</button></div>
+    </div>
+  </section>
+
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">Ce qu'ils disent</div>
+      <h2 class="section-title" style="text-align:center;">Ils ont automatisé avec <span class="gradient-text">WorkflowHub</span></h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">En moins d'une semaine, notre workflow de publication blog tournait tout seul. On a récupéré 3h par jour que l'équipe consacre maintenant à des tâches à vraie valeur ajoutée.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TM</div>
+            <div>
+              <div class="testi-name">Thomas Marchand</div>
+              <div class="testi-role">Directeur Marketing — Agence Pixel</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">La synchro CRM a éliminé toutes nos doubles saisies. HubSpot, Salesforce et nos Google Sheets sont enfin alignés en temps réel. Indispensable pour une équipe commerciale.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SL</div>
+            <div>
+              <div class="testi-name">Sophie Laurent</div>
+              <div class="testi-role">Head of Sales — TechScale SAS</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Le chatbot IA gère 60% de nos tickets support sans intervention. Nos clients obtiennent une réponse en secondes, 24h/24. Le ROI était visible dès le premier mois.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RB</div>
+            <div>
+              <div class="testi-name">Romain Beaumont</div>
+              <div class="testi-role">CTO — Startup FinTech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Prêt à automatiser votre business ?</h2>
+        <p>Rejoignez 500+ entreprises qui économisent des heures chaque semaine grâce à l'IA.</p>
+        <div class="cta-btns">
+          <button class="btn btn-white btn-lg" onclick="showPage('shop')">Voir tous les workflows</button>
+          <button class="btn btn-ghost btn-lg" onclick="showPage('contact')">Nous contacter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE BOUTIQUE
+════════════════════════════════════ -->
+<div id="page-shop" class="page">
+  <div class="page-hero"><div class="container"><div class="section-label">Catalogue</div><h1>Nos Workflows d'<span class="gradient-text">Automatisation</span></h1><p>150+ workflows professionnels prêts à déployer, alimentés par l'IA</p></div></div>
+  <section class="section" style="padding-top:44px;">
+    <div class="container">
+      <div class="shop-filters">
+        <div class="filter-tabs">
+          <button class="ftab active" onclick="filterP(this,'all')">Tous</button>
+          <button class="ftab" onclick="filterP(this,'marketing')">Marketing</button>
+          <button class="ftab" onclick="filterP(this,'ventes')">Ventes</button>
+          <button class="ftab" onclick="filterP(this,'productivite')">Productivité</button>
+          <button class="ftab" onclick="filterP(this,'contenu')">Contenu</button>
+          <button class="ftab" onclick="filterP(this,'analytics')">Analytics</button>
+        </div>
+        <div class="filter-right">
+          <div class="search-wrap"><span>🔍</span><input type="text" placeholder="Rechercher..." id="searchInput" oninput="searchP()"></div>
+          <select class="fselect" onchange="sortP(this.value)">
+            <option value="popular">Plus populaires</option>
+            <option value="asc">Prix croissant</option>
+            <option value="desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE TARIFS
+════════════════════════════════════ -->
+<div id="page-pricing" class="page">
+  <div class="page-hero"><div class="container" style="text-align:center;"><div class="section-label">Tarification</div><h1>Tarifs <span class="gradient-text">Transparents</span></h1><p style="max-width:500px;margin:0 auto;">Choisissez la formule adaptée à votre entreprise. Support et mises à jour inclus.</p>
+    <div class="pricing-toggle">
+      <span class="tl" style="color:#fff;">Mensuel</span>
+      <label class="tswitch"><input type="checkbox" id="billingToggle" onchange="toggleBilling()"><span class="tslider"></span></label>
+      <span class="tl" style="color:#fff;">Annuel</span><span class="tbadge" style="background:rgba(99,102,241,0.3);color:#c7d2fe;border:1px solid rgba(99,102,241,0.4);">-20%</span>
+    </div>
+  </div></div>
+  <section class="section" style="padding-top:20px;">
+    <div class="container">
+      <div class="pricing-grid">
+        <div class="pcard"><span class="plan-badge pb-s">Pour débuter</span><div class="plan-name">Starter</div><div class="plan-price" id="sp">99€</div><div class="plan-period" id="spe">/mois — facturé mensuellement</div><div class="plan-desc">Parfait pour les petites équipes qui démarrent l'automatisation</div><ul class="plan-feats"><li>5 workflows au choix</li><li>Support email (48h)</li><li>Mises à jour incluses</li><li>Documentation complète</li><li>Installation guidée</li></ul><button class="btn btn-outline" style="width:100%;justify-content:center;font-size:16px;" onclick="openModal('register')">Commencer</button></div>
+        <div class="pcard featured"><div class="pop-tag">⭐ Le plus populaire</div><span class="plan-badge pb-p">Recommandé</span><div class="plan-name">Pro</div><div class="plan-price g" id="pp">249€</div><div class="plan-period" id="ppe">/mois — facturé mensuellement</div><div class="plan-desc">Pour les entreprises en croissance qui automatisent massivement</div><ul class="plan-feats"><li>20 workflows au choix</li><li>Support prioritaire 24/7</li><li>Workflows personnalisés (2/mois)</li><li>Formation en ligne incluse</li><li>API access complet</li><li>Webhooks illimités</li><li>Analytics avancés</li></ul><button class="btn btn-primary" style="width:100%;justify-content:center;font-size:17px;" onclick="openModal('register')">Commencer maintenant →</button></div>
+        <div class="pcard"><span class="plan-badge pb-e">Sur mesure</span><div class="plan-name">Enterprise</div><div class="plan-price" style="font-size:38px;line-height:1.3;">Sur devis</div><div class="plan-period">Contactez notre équipe commerciale</div><div class="plan-desc">Solution complète et personnalisée pour grandes entreprises</div><ul class="plan-feats"><li>Workflows illimités</li><li>Account manager dédié</li><li>Développement sur mesure</li><li>Formation sur site</li><li>SLA garanti 99.9%</li><li>Intégrations custom</li><li>White label disponible</li></ul><button class="btn btn-outline" style="width:100%;justify-content:center;font-size:16px;" onclick="showPage('contact')">Nous contacter</button></div>
+      </div>
+      <div style="text-align:center;margin-top:68px;"><div class="section-label">FAQ</div><h2 class="section-title">Questions <span class="gradient-text">fréquentes</span></h2></div>
+      <div class="faq-wrap">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Puis-je changer de plan à tout moment ?</span><div class="faq-ico">+</div></div><div class="faq-a">Oui, vous pouvez upgrader ou downgrader votre plan à n'importe quel moment. Les changements sont pris en compte immédiatement avec un ajustement au prorata.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Les workflows fonctionnent-ils avec mon instance n8n existante ?</span><div class="faq-ico">+</div></div><div class="faq-a">Absolument ! Nos workflows sont compatibles avec toutes les versions de n8n (cloud et self-hosted). Un simple import JSON suffit pour déployer.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Que se passe-t-il si j'ai besoin d'aide pour configurer un workflow ?</span><div class="faq-ico">+</div></div><div class="faq-a">Notre équipe support est disponible pour vous guider. Selon votre plan, vous bénéficiez d'un support email (48h), prioritaire (24/7) ou d'un account manager dédié.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Y a-t-il une période d'essai ?</span><div class="faq-ico">+</div></div><div class="faq-a">Nous proposons une garantie satisfait ou remboursé de 14 jours. Si vous n'êtes pas satisfait, nous vous remboursons intégralement sans question.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Les mises à jour des workflows sont-elles incluses ?</span><div class="faq-ico">+</div></div><div class="faq-a">Oui, toutes les mises à jour et améliorations des workflows que vous avez achetés sont incluses gratuitement, quelle que soit votre formule.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Puis-je acheter des workflows à l'unité sans abonnement ?</span><div class="faq-ico">+</div></div><div class="faq-a">Oui ! Vous pouvez acheter chaque workflow individuellement dans notre boutique. Les abonnements offrent une réduction significative si vous avez besoin de plusieurs workflows.</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE À PROPOS
+════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="page-hero"><div class="container"><div class="section-label">Notre histoire</div><h1>À propos de <span class="gradient-text">WorkflowHub</span></h1><p>La mission qui nous anime : démocratiser l'automatisation IA pour toutes les entreprises</p></div></div>
+  <section class="section">
+    <div class="container">
+      <div class="about-2col">
+        <div>
+          <div class="section-label">Mission</div>
+          <h2 class="section-title">Pourquoi nous avons créé <span class="gradient-text">WorkflowHub</span></h2>
+          <p style="font-size:18px;color:var(--muted);line-height:1.8;margin-bottom:20px;">Fondée en 2024 par une équipe d'ingénieurs passionnés d'automatisation, WorkflowHub est née d'un constat simple : trop d'entreprises perdent du temps à réinventer la roue.</p>
+          <p style="font-size:18px;color:var(--muted);line-height:1.8;margin-bottom:36px;">Nous créons des workflows professionnels pour permettre à chacun de se concentrer sur son cœur de métier, en laissant les tâches répétitives à l'IA.</p>
+          <button class="btn btn-primary btn-lg" onclick="showPage('shop')">Découvrir nos workflows →</button>
+        </div>
+        <div class="aimg">
+          <!-- Photo d'équipe startup moderne open space -->
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=85" alt="Équipe WorkflowHub" loading="lazy">
+        </div>
+      </div>
+      <div style="margin-top:88px;text-align:center;"><div class="section-label">Nos valeurs</div><h2 class="section-title">Ce qui nous <span class="gradient-text">différencie</span></h2></div>
+      <div class="val-grid">
+        <div class="vcard"><div class="vico">💎</div><h3>Qualité</h3><p>Chaque workflow rigoureusement testé en conditions réelles avant publication. Zéro compromis.</p></div>
+        <div class="vcard"><div class="vico">🔍</div><h3>Transparence</h3><p>Code source accessible, documentation complète, tarifs clairs. Pas de surprise ni frais cachés.</p></div>
+        <div class="vcard"><div class="vico">🚀</div><h3>Innovation</h3><p>À la pointe de l'IA et de l'automatisation. Nous intégrons les dernières avancées en permanence.</p></div>
+      </div>
+      <div style="margin-top:88px;text-align:center;"><div class="section-label">Notre parcours</div><h2 class="section-title">Une croissance <span class="gradient-text">accélérée</span></h2></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot">24</div><div class="tl-body"><h4>2024 — Fondation</h4><p>Création de WorkflowHub par 3 ingénieurs passionnés à Paris</p></div></div>
+        <div class="tl-item"><div class="tl-dot">Q1</div><div class="tl-body"><h4>Q1 2025 — Premier jalon</h4><p>50 workflows publiés, 100 entreprises clientes, levée de fonds seed 500k€</p></div></div>
+        <div class="tl-item"><div class="tl-dot">Q3</div><div class="tl-body"><h4>Q3 2025 — Accélération</h4><p>150 workflows disponibles, 500 entreprises clientes, expansion en Europe</p></div></div>
+        <div class="tl-item"><div class="tl-dot">26</div><div class="tl-body"><h4>2026 — Expansion internationale</h4><p>Lancement aux USA, UK et Canada. Objectif : 2000 clients</p></div></div>
+      </div>
+      <div style="margin-top:88px;text-align:center;"><div class="section-label">L'équipe</div><h2 class="section-title">Des experts <span class="gradient-text">passionnés</span></h2></div>
+      <div class="team-grid">
+        <div class="tcard"><div class="tcard-info"><div class="tcard-name">Maxime Goldstein</div><div class="tcard-role">Créateur</div></div></div>
+      </div>
+      <div style="margin-top:70px;"><div class="cta-banner"><h2>Rejoignez des centaines d'entreprises 🚀</h2><p>Commencez à automatiser dès aujourd'hui avec WorkflowHub</p><div class="cta-btns"><button class="btn btn-white btn-lg" onclick="showPage('shop')">Découvrir nos workflows</button><button class="btn btn-ghost btn-lg" onclick="openModal('register')">Créer un compte gratuit</button></div></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE CONTACT
+════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero"><div class="container"><div class="section-label">Contactez-nous</div><h1>Parlons de <span class="gradient-text">votre projet</span></h1><p>Notre équipe est là pour vous accompagner dans votre transformation digitale</p></div></div>
+  <section class="section" style="padding-top:44px;">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="cinfo-block"><div class="cico">📧</div><div><h4>Email</h4><a href="mailto:contact@workflowhub.fr" style="color:var(--indigo);text-decoration:none;">contact@workflowhub.fr</a><br><a href="mailto:support@workflowhub.fr" style="color:var(--indigo);text-decoration:none;">support@workflowhub.fr</a></div></div>
+          <div class="cinfo-block"><div class="cico">📞</div><div><h4>Téléphone</h4><a href="tel:+33123456789" style="color:var(--indigo);text-decoration:none;font-weight:500;">+33 1 23 45 67 89</a><p style="font-size:13px;margin-top:2px;">Lun — Ven, 9h00 – 18h00</p></div></div>
+          <div class="cinfo-block"><div class="cico">📍</div><div><h4>Adresse</h4><p>42 Avenue des Champs-Élysées</p><p>75008 Paris, France</p></div></div>
+          <div style="margin-top:24px;border-radius:16px;overflow:hidden;border:1px solid var(--border);">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=700&q=80" alt="Paris" style="width:100%;height:200px;object-fit:cover;display:block;" loading="lazy">
+          </div>
+          <div class="social-row">
+            <a class="sbtn" href="https://linkedin.com" target="_blank" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a class="sbtn" href="https://twitter.com" target="_blank" title="Twitter/X">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#000" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="sbtn" href="https://github.com" target="_blank" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#333" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="cform">
+          <div class="frow"><div class="fg"><label>Prénom *</label><input type="text" placeholder="Alexandre"></div><div class="fg"><label>Nom *</label><input type="text" placeholder="Dubois"></div></div>
+          <div class="fg"><label>Email professionnel *</label><input type="email" placeholder="alexandre@entreprise.com"></div>
+          <div class="fg"><label>Entreprise</label><input type="text" placeholder="Votre entreprise"></div>
+          <div class="fg"><label>Téléphone</label><input type="tel" placeholder="+33 6 12 34 56 78"></div>
+          <div class="fg"><label>Type de projet</label><select><option>Découverte</option><option>Achat workflows</option><option>Personnalisation</option><option>Partenariat</option><option>Support technique</option></select></div>
+          <div class="fg"><label>Message *</label><textarea placeholder="Décrivez votre projet et vos besoins..."></textarea></div>
+          <div class="fg"><label class="fcheck"><input type="checkbox"> J'accepte que mes données soient utilisées pour me recontacter (RGPD)</label></div>
+          <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" onclick="submitContact()">Envoyer le message →</button>
+          <div class="fsuccess" id="formSuccess">✅ <strong>Message envoyé !</strong> Notre équipe vous répondra sous 24h.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PAGE CHECKOUT -->
+<div id="page-checkout" class="page">
+  <div class="page-hero"><div class="container"><h1>🔒 Paiement <span class="gradient-text">sécurisé</span></h1></div></div>
+  <section class="section" style="padding-top:44px;">
+    <div class="container">
+      <div class="co-grid">
+        <div>
+          <div class="co-card"><h3><span class="step-n">1</span> Informations client</h3><div class="fg"><label>Email</label><input type="email" placeholder="vous@entreprise.com"></div><div class="frow"><div class="fg"><label>Prénom</label><input type="text" placeholder="Alexandre"></div><div class="fg"><label>Nom</label><input type="text" placeholder="Dubois"></div></div><div class="fg"><label>Entreprise (optionnel)</label><input type="text" placeholder="Votre entreprise"></div><div class="fg"><label>Adresse de facturation</label><input type="text" placeholder="42 rue de la Paix, 75001 Paris"></div></div>
+          <div class="co-card"><h3><span class="step-n">2</span> Méthode de paiement</h3><div class="pay-tabs"><div class="ptab active" onclick="selPay(this)">💳 Carte</div><div class="ptab" onclick="selPay(this)">🅿️ PayPal</div><div class="ptab" onclick="selPay(this)">🏦 Virement</div></div><div class="card-logos"><span class="clbadge">VISA</span><span class="clbadge">MC</span><span class="clbadge">AMEX</span></div><div class="fg"><label>Numéro de carte</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="frow"><div class="fg"><label>Expiration</label><input type="text" placeholder="MM/AA" maxlength="5"></div><div class="fg"><label>CVV</label><input type="text" placeholder="123" maxlength="4"></div></div><div class="fg"><label>Nom sur la carte</label><input type="text" placeholder="ALEXANDRE DUBOIS"></div><label class="fcheck"><input type="checkbox"> Sauvegarder pour mes prochains achats</label></div>
+        </div>
+        <div>
+          <div class="co-card"><h3><span class="step-n">3</span> Récapitulatif</h3><div id="coItems"></div><div class="ctotals" style="margin-top:16px;" id="coTotals"></div><button class="btn btn-primary" style="width:100%;justify-content:center;font-size:17px;padding:17px;" onclick="confirmPay()">🔒 Valider le paiement</button><div class="sec-badges"><span class="sbadge">🔒 SSL 256-bit</span><span class="sbadge">✅ Sécurisé</span><span class="sbadge">🛡️ 3D Secure</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg width="34" height="34" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="11" fill="url(#svgG16)"/><defs><linearGradient id="svgG16" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><circle cx="21" cy="10" r="2.5" fill="white" opacity="0.9"/><circle cx="10" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="32" cy="22" r="2.5" fill="white" opacity="0.9"/><circle cx="14" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="28" cy="34" r="2.5" fill="white" opacity="0.9"/><circle cx="21" cy="22" r="4" fill="white"/><line x1="21" y1="10" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="10" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="32" y1="22" x2="21" y2="22" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="14" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/><line x1="21" y1="22" x2="28" y2="34" stroke="white" stroke-width="1.5" opacity="0.6"/></svg>
+          <div class="logo-text-wrap"><div class="logo-name" style="color:#fff;">Workflow<span>Hub</span></div><div class="logo-tagline" style="color:#8892a4;">AI Automation Lab</div></div>
+        </div>
+        <div class="fdesc">Workflows d'automatisation n8n alimentés par l'IA. Prêts à déployer, économisez des semaines de développement.</div>
+        <div class="fsocial">
+          <a href="https://linkedin.com" target="_blank">in</a>
+          <a href="https://twitter.com" target="_blank">𝕏</a>
+          <a href="https://github.com" target="_blank">⌥</a>
+          <a href="#" target="_blank">▶</a>
+        </div>
+      </div>
+      <div class="fcol"><h4>Navigation</h4><a onclick="showPage('home')">Accueil</a><a onclick="showPage('shop')">Boutique</a><a onclick="showPage('pricing')">Tarifs</a><a onclick="showPage('about')">À propos</a><a onclick="showPage('contact')">Contact</a></div>
+      <div class="fcol"><h4>Ressources</h4><a href="https://docs.n8n.io" target="_blank">Documentation n8n</a><a onclick="showPage('home')" style="cursor:pointer;">Blog</a><a href="mailto:support@workflowhub.fr">Support</a><a href="https://docs.n8n.io/api/" target="_blank">API</a><a onclick="showToast('🟢 Tous les systèmes sont opérationnels')" style="cursor:pointer;">Statut système</a></div>
+      <div class="fcol"><h4>Légal</h4><a onclick="showToast('📄 Mentions légales disponibles sur demande')" style="cursor:pointer;">Mentions légales</a><a onclick="showToast('📋 CGV disponibles sur demande')" style="cursor:pointer;">CGV</a><a onclick="showToast('🔒 Politique de confidentialité disponible sur demande')" style="cursor:pointer;">Confidentialité</a><a onclick="showToast('🍪 Gestion des cookies disponible bientôt')" style="cursor:pointer;">Cookies</a></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.07);"><div class="container"><div class="footer-bottom"><span>© 2026 WorkflowHub — AI Automation Lab. Tous droits réservés.</span></div></div></div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-ov" id="cartOv" onclick="toggleCart()"></div>
+<div class="cart-sb" id="cartSb">
+  <div class="cart-hd"><h3>🛒 Mon panier</h3><button class="mclose" onclick="toggleCart()">×</button></div>
+  <div class="cart-body" id="cartBody"><div class="cempty"><div class="cempty-ico">🛒</div><p style="font-size:17px;">Votre panier est vide</p><button class="btn btn-primary" style="margin-top:16px;" onclick="toggleCart();showPage('shop')">Voir les workflows</button></div></div>
+  <div class="cart-ft" id="cartFt" style="display:none;">
+    <div class="promo-row"><input type="text" placeholder="Code promo" id="promoInput"><button onclick="applyPromo()">Appliquer</button></div>
+    <div class="ctotals" id="cartTotals"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:16px;" onclick="toggleCart();showPage('checkout')">Passer au paiement →</button>
+    <div style="text-align:center;margin-top:11px;"><a style="font-size:14px;color:var(--indigo);cursor:pointer;" onclick="toggleCart()">Continuer mes achats</a></div>
+  </div>
+</div>
+
+<!-- MODAL LOGIN -->
+<div class="moverlay" id="modal-login">
+  <div class="modal">
+    <button class="mclose" onclick="closeModal('login')">×</button>
+    <div class="modal-title">Bon retour ! 👋</div>
+    <div class="modal-sub">Connectez-vous à votre compte WorkflowHub</div>
+    <!-- Google -->
+    <button class="oauth-btn" onclick="showToast('🔵 Redirection Google...')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continuer avec Google
+    </button>
+    <!-- GitHub -->
+    <button class="oauth-btn" onclick="showToast('⬛ Redirection GitHub...')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#333" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      Continuer avec GitHub
+    </button>
+    <div class="divider">ou</div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="vous@entreprise.com"></div>
+    <div class="fg"><label>Mot de passe</label><input type="password" placeholder="••••••••"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <label class="fcheck" style="margin:0;"><input type="checkbox"> Se souvenir de moi</label>
+      <a style="font-size:14px;color:var(--indigo);cursor:pointer;" onclick="showToast('📧 Email de réinitialisation envoyé !')">Mot de passe oublié ?</a>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeModal('login');showToast('✅ Connexion réussie ! Bienvenue 👋')">Se connecter</button>
+    <div class="mfooter">Pas encore de compte ? <a onclick="closeModal('login');openModal('register')">Créer un compte</a></div>
+  </div>
+</div>
+
+<!-- MODAL REGISTER -->
+<div class="moverlay" id="modal-register">
+  <div class="modal">
+    <button class="mclose" onclick="closeModal('register')">×</button>
+    <div class="modal-title">Créer mon compte 🚀</div>
+    <div class="modal-sub">Rejoignez 500+ entreprises qui automatisent avec WorkflowHub</div>
+    <button class="oauth-btn" onclick="showToast('🔵 Inscription via Google...')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continuer avec Google
+    </button>
+    <button class="oauth-btn" onclick="showToast('⬛ Inscription via GitHub...')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#333" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      Continuer avec GitHub
+    </button>
+    <button class="oauth-btn" onclick="showToast('🔷 Inscription via LinkedIn...')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      Continuer avec LinkedIn
+    </button>
+    <div class="divider">ou</div>
+    <div class="frow"><div class="fg"><label>Prénom</label><input type="text" placeholder="Alexandre"></div><div class="fg"><label>Nom</label><input type="text" placeholder="Dubois"></div></div>
+    <div class="fg"><label>Email professionnel</label><input type="email" placeholder="vous@entreprise.com"></div>
+    <div class="fg"><label>Mot de passe</label><input type="password" placeholder="8 caractères minimum" oninput="checkStrength(this)"><div class="pw-strength"><div class="pw-bar" id="s1"></div><div class="pw-bar" id="s2"></div><div class="pw-bar" id="s3"></div><div class="pw-bar" id="s4"></div></div></div>
+    <div class="fg"><label>Confirmer le mot de passe</label><input type="password" placeholder="Confirmez votre mot de passe"></div>
+    <div class="fg"><label>Entreprise</label><input type="text" placeholder="Nom de votre entreprise"></div>
+    <div class="fg"><label class="fcheck"><input type="checkbox"> J'accepte les <a style="color:var(--indigo)">CGV</a> et la <a style="color:var(--indigo)">politique de confidentialité</a></label></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeModal('register');showToast('🎉 Compte créé ! Bienvenue sur WorkflowHub !')">Créer mon compte</button>
+    <div class="mfooter">Déjà un compte ? <a onclick="closeModal('register');openModal('login')">Se connecter</a></div>
+  </div>
+</div>
+
+<script>
+/* ── DATA ── */
+const productDetails={
+  1:{longDesc:"Ce workflow connecte GPT-4 à votre CMS (WordPress, Webflow, Ghost) pour générer automatiquement des articles SEO-optimisés. Chaque article est rédigé, formaté et publié sans intervention humaine.",features:["Génération automatique via GPT-4","Intégration WordPress / Webflow / Ghost","Optimisation SEO automatique","Planification des publications","Support multi-langue"],nodes:["📅 Cron","🤖 GPT-4","✍️ Format","🌐 WordPress","📧 Notif"],reviews:[{name:"Thomas R.",stars:5,text:"Mon blog publie 3 articles par jour sans que je touche à rien."},{name:"Camille D.",stars:5,text:"Setup en 20 minutes, vraiment plug & play."}]},
+  2:{longDesc:"Automatisez vos campagnes email de A à Z. Ce workflow segmente vos contacts selon leur comportement, personnalise chaque message et envoie au meilleur moment.",features:["Segmentation comportementale automatique","Personnalisation dynamique","Envoi à l'heure optimale","Suivi des taux d'ouverture","Compatible Mailchimp / Brevo / Sendgrid"],nodes:["👥 Contacts","🔍 Segmentation","✉️ Template","⏰ Scheduler","📊 Analytics"],reviews:[{name:"Léa M.",stars:4.5,text:"Taux d'ouverture passé de 18% à 34% en deux semaines."},{name:"Pierre A.",stars:5,text:"Exactement ce qu'il me fallait pour mon agence."}]},
+  3:{longDesc:"Synchronisez vos données clients en temps réel entre HubSpot, Salesforce et Google Sheets. Fini les doubles saisies — tout est mis à jour instantanément.",features:["Sync bidirectionnelle temps réel","Gestion des conflits auto","Historique des modifications","Support HubSpot / Salesforce / Pipedrive","Alertes en cas d'erreur"],nodes:["🔄 Webhook","🔍 Deduplicate","↔️ Mapper","💾 Salesforce","📋 Sheets"],reviews:[{name:"Marc B.",stars:5,text:"Plus aucune donnée perdue entre nos outils. Indispensable."},{name:"Sophie K.",stars:4.5,text:"La gestion des conflits est vraiment bien pensée."}]},
+  4:{longDesc:"Générez et publiez automatiquement du contenu adapté à chaque réseau social à partir d'un seul brief. LinkedIn, Twitter, Instagram — tout en un workflow.",features:["Posts adaptés à chaque format","Génération de hashtags auto","Calendrier éditorial automatisé","Support LinkedIn / Twitter / Instagram","Images DALL-E en option"],nodes:["💡 Brief","🤖 Content AI","🔀 Adapter","📱 LinkedIn","🐦 Twitter"],reviews:[{name:"Julie F.",stars:5,text:"Je gagne au moins 3h par semaine sur mes publications."},{name:"Antoine C.",stars:4,text:"Très bon pour LinkedIn, Instagram encore perfectible."}]},
+  5:{longDesc:"Obtenez chaque lundi un dashboard complet de vos KPIs. Ce workflow collecte vos données (GA4, Stripe, CRM) et génère un rapport visuel avec commentaires IA.",features:["Collecte GA4 / Stripe / CRM","Rapport visuel avec graphiques","Commentaires générés par IA","Envoi automatique par email","Export PDF en un clic"],nodes:["⏰ Cron","📊 GA4","💳 Stripe","🤖 AI Insights","📧 Report"],reviews:[{name:"Nicolas P.",stars:5,text:"Mon rapport du lundi m'attendait dans ma boîte. Magique."},{name:"Emma T.",stars:5,text:"Les commentaires IA sont bluffants."}]},
+  6:{longDesc:"Déployez un chatbot intelligent sur votre site en quelques clics. Alimenté par Claude ou GPT-4, il répond 24/7, escalade les cas complexes et apprend de chaque échange.",features:["Réponses instantanées 24h/24","Escalade automatique vers humain","Apprentissage continu","Intégration Intercom / Zendesk","Personnalisation du ton et de la voix"],nodes:["💬 Chat","🧠 Claude/GPT","🔍 Knowledge","↗️ Escalation","📩 Slack"],reviews:[{name:"Romain L.",stars:5,text:"Réduit de 60% les tickets support simples. ROI immédiat."},{name:"Clara M.",stars:5,text:"Le client ne voit pas la différence avec un humain."}]},
+  7:{longDesc:"Synchronisez vos tâches entre Notion, Todoist et Google Calendar en temps réel. Créez une tâche dans Notion, elle apparaît automatiquement partout.",features:["Sync Notion ↔ Todoist ↔ Google Cal","Priorités et deadlines respectées","Rappels automatiques intelligents","Détection des conflits d'agenda","Résumé quotidien par email"],nodes:["📝 Notion","🔄 Mapper","📅 Google Cal","✅ Todoist","🔔 Reminder"],reviews:[{name:"Sara J.",stars:4.5,text:"Enfin une synchro qui fonctionne vraiment entre mes trois outils."},{name:"Hugo D.",stars:4,text:"Simple et efficace, exactement ce que je cherchais."}]},
+  8:{longDesc:"Automatisez la création de visuels marketing. À partir d'un brief, ce workflow génère des images avec DALL-E, les redimensionne et les envoie dans votre Drive.",features:["Génération DALL-E 3 / Midjourney","Redimensionnement multi-formats auto","Stockage automatique Google Drive","Intégration Canva en option","Jusqu'à 50 images/jour"],nodes:["✍️ Brief","🎨 DALL-E","✂️ Resizer","☁️ Drive","📲 Preview"],reviews:[{name:"Manon V.",stars:5,text:"On génère nos visuels pour la semaine en 5 minutes le lundi."},{name:"Théo B.",stars:4.5,text:"Qualité bluffante, surtout avec le prompt engineering inclus."}]},
+  9:{longDesc:"Surveillez vos concurrents automatiquement : prix, nouveautés, avis clients. Ce workflow scrape les sources définies et vous envoie un rapport hebdomadaire IA.",features:["Scraping automatique des concurrents","Détection des changements de prix","Analyse des avis concurrents","Rapport hebdomadaire IA","Alertes en temps réel"],nodes:["🌐 Watcher","🔍 Scraper","📊 Detector","🤖 Summary","📧 Alert"],reviews:[{name:"Adrien F.",stars:4.5,text:"Je suis toujours informé avant tout le monde des mouvements du marché."},{name:"Inès R.",stars:5,text:"Le rapport IA résume parfaitement ce qui compte vraiment."}]}
+};
+
+function openProductModal(id){
+  const p=products.find(x=>x.id===id);
+  const d=productDetails[id];
+  if(!p||!d)return;
+  document.getElementById('pmImg').src=p.img;
+  document.getElementById('pmImg').alt=p.name;
+  document.getElementById('pmTitle').textContent=p.name;
+  document.getElementById('pmPrice').textContent=p.price+'€';
+  document.getElementById('pmDesc').textContent=d.longDesc;
+  document.getElementById('pmBadge').textContent=p.badge==='popular'?'⭐ Populaire':p.badge==='new'?'🆕 Nouveau':'✅ Disponible';
+  let st='';for(let i=0;i<5;i++)st+=i<Math.floor(p.stars)?'★':'☆';
+  document.getElementById('pmStars').textContent=st+'  '+p.stars+'/5';
+  document.getElementById('pmNodes').innerHTML=d.nodes.map((n,i)=>'<span class="workflow-node">'+n+'</span>'+(i<d.nodes.length-1?'<span class="workflow-arrow">→</span>':'')).join('');
+  document.getElementById('pmFeatures').innerHTML=d.features.map(f=>'<li>'+f+'</li>').join('');
+  document.getElementById('pmReviews').innerHTML=d.reviews.map(r=>'<div class="prod-review"><div class="prod-review-name">'+r.name+'</div><div class="prod-review-stars">'+'★'.repeat(Math.floor(r.stars))+' '+r.stars+'/5</div><div class="prod-review-text">'+r.text+'</div></div>').join('');
+  document.getElementById('pmAddBtn').onclick=()=>{addToCart(p.name,p.price,p.img,p.id);document.getElementById('prodModalOv').classList.remove('open');};
+  document.getElementById('prodModalOv').classList.add('open');
+}
+function closeProdModal(e){if(e.target.id==='prodModalOv')document.getElementById('prodModalOv').classList.remove('open');}
+
+const products=[
+  {id:1,name:'Auto-Publication Blog IA',desc:'Génère et publie vos articles avec GPT-4 automatiquement',price:49,stars:5,badge:'popular',img:'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80',cat:'contenu'},
+  {id:2,name:'Campagnes Email Automatisées',desc:'Segmentation intelligente et envois personnalisés auto',price:39,stars:4.5,badge:'',img:'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=600&q=80',cat:'marketing'},
+  {id:3,name:'Sync CRM Multi-Plateformes',desc:'HubSpot ↔ Salesforce ↔ Google Sheets en temps réel',price:59,stars:4.8,badge:'popular',img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',cat:'ventes'},
+  {id:4,name:'Génération Posts Réseaux Sociaux',desc:'LinkedIn, Twitter, Instagram automatisés avec IA',price:44,stars:4.5,badge:'new',img:'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80',cat:'marketing'},
+  {id:5,name:'Dashboard Analytics Auto',desc:'Rapports hebdomadaires automatiques avec visualisations',price:69,stars:4.8,badge:'new',img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',cat:'analytics'},
+  {id:6,name:'Chatbot Service Client IA',desc:'Réponses automatiques 24/7 avec Claude ou GPT-4',price:79,stars:5,badge:'popular',img:'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80',cat:'ventes'},
+  {id:7,name:'Gestion Tâches Intelligente',desc:'Notion ↔ Todoist ↔ Google Calendar synchronisés',price:34,stars:4.5,badge:'',img:'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80',cat:'productivite'},
+  {id:8,name:'Génération Visuels IA',desc:'Automation Midjourney & DALL-E pour vos projets visuels',price:54,stars:4.8,badge:'new',img:'https://images.unsplash.com/photo-1686191128892-3b37add4c844?w=600&q=80',cat:'contenu'},
+  {id:9,name:'Veille Concurrentielle Auto',desc:'Scraping et analyse automatique de vos concurrents',price:64,stars:4.5,badge:'',img:'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80',cat:'analytics'},
+];
+let cart=[],cFilter='all',cSort='popular',cSearch='',isAnnual=false;
+
+/* ── NAVIGATION ── */
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  const t=document.getElementById('page-'+p);if(t){t.classList.add('active');window.scrollTo(0,0);}
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const map={home:0,shop:1,pricing:2,about:3,contact:4};
+  const ls=document.querySelectorAll('.nav-links a');
+  if(map[p]!==undefined&&ls[map[p]])ls[map[p]].classList.add('active');
+  if(p==='shop')renderProducts();
+  if(p==='checkout')renderCheckout();
+  if(p==='home')startCounters();
+}
+
+/* ── PRODUCTS ── */
+function renderProducts(){
+  let f=products.filter(p=>(cFilter==='all'||p.cat===cFilter)&&(cSearch===''||p.name.toLowerCase().includes(cSearch.toLowerCase())||p.desc.toLowerCase().includes(cSearch.toLowerCase())));
+  if(cSort==='asc')f.sort((a,b)=>a.price-b.price);
+  else if(cSort==='desc')f.sort((a,b)=>b.price-a.price);
+  const g=document.getElementById('productsGrid');if(!g)return;
+  if(!f.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:64px;color:var(--muted);font-size:17px;">🔍 Aucun workflow trouvé</div>';return;}
+  g.innerHTML=f.map(p=>`
+    <div class="pcf" onclick="openProductModal(${p.id})" style="cursor:pointer;">
+      <div class="pimg"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="pimg-overlay"></div>${p.badge?`<span class="pbadge ${p.badge==='popular'?'bp':'bn'}">${p.badge==='popular'?'Populaire':'Nouveau'}</span>`:''}</div>
+      <div class="pinfo">
+        <div class="prating"><span class="stars">${stars(p.stars)}</span><span>${p.stars}★</span></div>
+        <div class="pname">${p.name}</div><div class="pdesc">${p.desc}</div>
+        <div class="pfooter"><div class="pprice">${p.price}€</div></div>
+        <button class="add-btn" id="btn-${p.id}" onclick="event.stopPropagation();addToCart('${p.name.replace(/'/g,"\\'")}',${p.price},'${p.img}',${p.id})">🛒 Ajouter au panier</button>
+      </div>
+    </div>`).join('');
+}
+function stars(n){let s='';for(let i=0;i<5;i++)s+=i<Math.floor(n)?'★':'☆';return s;}
+function filterP(el,cat){cFilter=cat;document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderProducts();}
+function sortP(v){cSort=v;renderProducts();}
+function searchP(){cSearch=document.getElementById('searchInput').value;renderProducts();}
+
+/* ── CART ── */
+function addToCart(name,price,img,id){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty++;else cart.push({name,price,img,qty:1});
+  updateBadge();renderCart();showToast(`✅ ${name} ajouté au panier !`);
+  if(id){const b=document.getElementById('btn-'+id);if(b){b.textContent='✓ Ajouté !';b.classList.add('added');setTimeout(()=>{b.textContent='🛒 Ajouter au panier';b.classList.remove('added');},2000);}}
+}
+function updateBadge(){document.getElementById('cartBadge').textContent=cart.reduce((s,i)=>s+i.qty,0);}
+function toggleCart(){document.getElementById('cartSb').classList.toggle('open');document.getElementById('cartOv').classList.toggle('open');}
+function renderCart(){
+  const body=document.getElementById('cartBody'),ft=document.getElementById('cartFt');
+  if(!cart.length){body.innerHTML='<div class="cempty"><div class="cempty-ico">🛒</div><p style="font-size:17px;">Votre panier est vide</p><button class="btn btn-primary" style="margin-top:16px;" onclick="toggleCart();showPage(\'shop\')">Voir les workflows</button></div>';ft.style.display='none';return;}
+  body.innerHTML=cart.map((item,i)=>`<div class="ci"><div class="ci-img"><img src="${item.img}" alt="${item.name}"></div><div class="ci-info"><div class="ci-name">${item.name}</div><div class="ci-price">${item.price}€</div><div class="ci-qty"><button class="qbtn" onclick="chQty(${i},-1)">−</button><span style="font-weight:600;min-width:22px;text-align:center;">${item.qty}</span><button class="qbtn" onclick="chQty(${i},1)">+</button></div></div><button class="ci-del" onclick="rmItem(${i})">×</button></div>`).join('');
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0),tva=Math.round(sub*.2);
+  document.getElementById('cartTotals').innerHTML=`<div class="ctr"><span>Sous-total</span><span>${sub}€</span></div><div class="ctr"><span>TVA 20%</span><span>${tva}€</span></div><div class="ctr total"><span>Total TTC</span><span>${sub+tva}€</span></div>`;
+  ft.style.display='block';
+}
+function chQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateBadge();renderCart();}
+function rmItem(i){cart.splice(i,1);updateBadge();renderCart();}
+function applyPromo(){const c=document.getElementById('promoInput').value.toUpperCase();showToast(c==='WORKFLOW20'?'🎉 Code appliqué : -20% !':'❌ Code promo invalide');}
+
+/* ── CHECKOUT ── */
+function renderCheckout(){
+  const items=document.getElementById('coItems'),totals=document.getElementById('coTotals');if(!items)return;
+  if(!cart.length){items.innerHTML='<p style="color:var(--muted);">Panier vide. <a style="color:var(--indigo);cursor:pointer;" onclick="showPage(\'shop\')">Ajouter des workflows</a></p>';totals.innerHTML='';return;}
+  items.innerHTML=cart.map(i=>`<div class="oi"><div class="oi-img"><img src="${i.img}" alt="${i.name}"></div><div style="flex:1;font-size:15px;font-weight:500;">${i.name}</div><div style="font-weight:700;">${i.price*i.qty}€</div></div>`).join('');
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0),tva=Math.round(sub*.2);
+  totals.innerHTML=`<div class="ctr"><span>Sous-total</span><span>${sub}€</span></div><div class="ctr"><span>TVA 20%</span><span>${tva}€</span></div><div class="ctr total"><span>Total TTC</span><span>${sub+tva}€</span></div>`;
+}
+function confirmPay(){
+  const ei=document.querySelector('#page-checkout input[type="email"]');
+  const em=ei&&ei.value?ei.value:'contact@workflowhub.fr';
+  showToast('✅ Paiement validé ! Confirmation envoyée à '+em+' 🎉');
+  cart=[];updateBadge();
+  setTimeout(()=>{showPage('home');},2000);
+}
+function selPay(el){document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+
+/* ── MODALS ── */
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');}
+document.querySelectorAll('.moverlay').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');}));
+
+/* ── PRICING ── */
+function toggleBilling(){
+  isAnnual=document.getElementById('billingToggle').checked;
+  document.getElementById('sp').textContent=isAnnual?'79€':'99€';
+  document.getElementById('spe').textContent=isAnnual?'/mois — facturé annuellement (950€/an)':'/mois — facturé mensuellement';
+  document.getElementById('pp').textContent=isAnnual?'199€':'249€';
+  document.getElementById('ppe').textContent=isAnnual?'/mois — facturé annuellement (2390€/an)':'/mois — facturé mensuellement';
+}
+
+/* ── FAQ ── */
+function toggleFaq(el){const item=el.parentElement,ans=item.querySelector('.faq-a'),open=ans.classList.contains('open');document.querySelectorAll('.faq-a.open').forEach(a=>{a.classList.remove('open');a.parentElement.classList.remove('open');});if(!open){ans.classList.add('open');item.classList.add('open');}}
+
+/* ── COUNTERS ── */
+function startCounters(){
+  ['stat1','stat2','stat3'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='0';});
+  setTimeout(()=>{animC('stat1',0,150,1500,'150+');animC('stat2',0,500,1800,'500+');animC('stat3',0,98,1200,'98%');},150);
+}
+function animC(id,from,to,dur,suffix){const el=document.getElementById(id);if(!el)return;const t0=Date.now();const tick=()=>{const p=Math.min((Date.now()-t0)/dur,1);el.textContent=p>=1?suffix:Math.round(from+(to-from)*easeOut(p))+(suffix.includes('+')?'+':'%');if(p<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);}
+function easeOut(t){return 1-Math.pow(1-t,3);}
+
+/* ── CONTACT ── */
+function submitContact(){document.getElementById('formSuccess').classList.add('show');showToast('✅ Message envoyé avec succès !');}
+
+/* ── PASSWORD ── */
+function checkStrength(input){const v=input.value;let s=0;if(v.length>=6)s++;if(v.length>=10)s++;if(/[A-Z]/.test(v)&&/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;const c=['#ef4444','#f59e0b','#10b981','#6366f1'];['s1','s2','s3','s4'].forEach((b,i)=>{const el=document.getElementById(b);if(el)el.style.background=i<s?c[s-1]:'var(--border)';});}
+
+/* ── TOAST ── */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+/* ── SCROLL ── */
+window.addEventListener('scroll',e=>{
+  const h=document.querySelector('header');
+  if(h)h.classList.toggle('scrolled',window.scrollY>20);
+  const btn=document.getElementById('backTop');
+  if(btn)btn.style.display=window.scrollY>300?'flex':'none';
+});
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ── INIT ── */
+window.addEventListener('DOMContentLoaded',()=>{startCounters();renderProducts();});
+
+</script>
+
+<div class="prod-modal-ov" id="prodModalOv" onclick="closeProdModal(event)">
+  <div class="prod-modal" id="prodModal">
+    <button class="prod-modal-close" onclick="document.getElementById('prodModalOv').classList.remove('open')">✕</button>
+    <div class="prod-modal-img"><img id="pmImg" src="" alt=""></div>
+    <div class="prod-modal-body">
+      <div class="prod-modal-badge" id="pmBadge"></div>
+      <div class="prod-modal-title" id="pmTitle"></div>
+      <div class="prod-modal-stars" id="pmStars"></div>
+      <div class="prod-modal-price" id="pmPrice"></div>
+      <div class="prod-modal-desc" id="pmDesc"></div>
+      <div class="workflow-preview" id="pmNodes"></div>
+      <ul class="prod-modal-features" id="pmFeatures"></ul>
+      <button class="btn btn-primary" id="pmAddBtn" style="width:100%;justify-content:center;font-size:16px;margin-top:8px;">🛒 Ajouter au panier</button>
+      <div class="prod-modal-reviews">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:10px;">Avis clients</div>
+        <div id="pmReviews"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
